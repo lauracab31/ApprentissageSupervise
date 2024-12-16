@@ -13,7 +13,6 @@ from sklearn.preprocessing import StandardScaler
 
 import joblib as jl
 
-#extraire features dans une dataframe et la visualiser
 df= pd.read_csv('alt_acsincome_ca_features_85(1).csv')
 lbl = pd.read_csv('alt_acsincome_ca_labels_85.csv')
 
@@ -21,9 +20,8 @@ scalerX=StandardScaler()
 scaler2=scalerX.fit(df)
 features_scaled=scaler2.transform(df)
 
-# Préparation des données pour le partitionnement
 X = features_scaled
-y = lbl.values.ravel()  # Convertir en format numpy (1D) compatible avec StratifiedShuffleSplit
+y = lbl.values.ravel()  
 
 # Partitionnement du jeu de données
 sss = StratifiedShuffleSplit(n_splits=5, test_size=0.2, train_size=0.8, random_state=42)
