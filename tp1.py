@@ -81,7 +81,7 @@ print("Les meilleurs paramètres sont : ", bestParam_rf)
 #enregistrement du meilleur modèle obtenu
 jl.dump(gridSearch_rf.best_estimator_ ,'gridSearch_rf.joblib')
 
-"""
+
 
 # 2) on continue avec le modèle type AdaBoost :
 ab_model = AdaBoostClassifier()
@@ -143,4 +143,4 @@ print("Les meilleurs paramètres sont : ", bestParam_gb)
 #enregistrement du meilleur modèle obtenu
 jl.dump(gridSearch_gb.best_estimator_ ,'gridSearch_gb.joblib')
 
-"""
+
