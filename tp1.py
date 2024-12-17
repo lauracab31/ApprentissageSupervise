@@ -7,6 +7,7 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import StratifiedShuffleSplit, cross_val_score, GridSearchCV
 from sklearn.ensemble import AdaBoostClassifier, GradientBoostingClassifier, RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
+import seaborn as sns
 
 
 import joblib as jl
@@ -68,8 +69,19 @@ class_rf = classification_report(y_test, rf_prediction)
 mat_conf_rf = confusion_matrix(y_test, rf_prediction)
 
 print("Acuracy = ", ac_rf)
-print("classification report = ", class_rf)
+print("classification report = \n", class_rf)
 print("matrice de confusion = ", mat_conf_rf)
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(mat_conf_rf, annot=True, fmt="d", cmap="Blues", cbar=False,
+            xticklabels=["Predicted Class 0", "Predicted Class 1"],
+            yticklabels=["Actual Class 0", "Actual Class 1"])
+
+# Add labels, title, and formatting
+plt.xlabel("Predicted Labels")
+plt.ylabel("True Labels")
+plt.title("Matrice de confusion RandomForest")
+plt.show()
 
 #recherche de la meilleure qualité d'apprentissage avec la détermination des hyperparamètres (partie 3.2)
 param_rf = {'n_estimators' : [50,100,120], 'criterion':['gini','entropy','log_loss'], 'max_depth':[None, 10, 20], 'min_samples_split':[0.1, 1.0, 2]}
@@ -99,8 +111,19 @@ mat_conf_ab = confusion_matrix(y_test, ab_prediction)
 
 print("Moyenne des scores de Validation croisée AdaBoost = ", cv_scores_ab)
 print("Acuracy AdaBoost = ", ac_ab)
-print("classification report AdaBoost = ", class_ab)
+print("classification report AdaBoost = \n", class_ab)
 print("matrice de confusion AdaBoost = ", mat_conf_ab)
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(mat_conf_ab, annot=True, fmt="d", cmap="Blues", cbar=False,
+            xticklabels=["Predicted Class 0", "Predicted Class 1"],
+            yticklabels=["Actual Class 0", "Actual Class 1"])
+
+# Add labels, title, and formatting
+plt.xlabel("Predicted Labels")
+plt.ylabel("True Labels")
+plt.title("Matrice de confusion AdaBoost")
+plt.show()
 
 #recherche de la meilleure qualité d'apprentissage avec la détermination des hyperparamètres (partie 3.2)
 param_ab = {'n_estimators' : [10,40,100], 'algorithm':['SAMME', 'SAMME.R'], 'learning_rate':[0.2, 0.5, 1.0]}
@@ -130,8 +153,18 @@ class_gb = classification_report(y_test, gb_prediction)
 mat_conf_gb = confusion_matrix(y_test, gb_prediction)
 
 print("Acuracy Gradient Boosting = ", ac_gb)
-print("classification report Gradient Boosting = ", class_gb)
+print("classification report Gradient Boosting =\n ", class_gb)
 print("matrice de confusion Gradient Boosting = ", mat_conf_gb)
+plt.figure(figsize=(8, 6))
+sns.heatmap(mat_conf_gb, annot=True, fmt="d", cmap="Blues", cbar=False,
+            xticklabels=["Predicted Class 0", "Predicted Class 1"],
+            yticklabels=["Actual Class 0", "Actual Class 1"])
+
+# Add labels, title, and formatting
+plt.xlabel("Predicted Labels")
+plt.ylabel("True Labels")
+plt.title("Matrice de confusion GradientBoosting")
+plt.show()
 
 #recherche de la meilleure qualité d'apprentissage avec la détermination des hyperparamètres (partie 3.2)
 param_gb = {'n_estimators' : [20,50,100], 'loss':['log_loss', 'exponential'], 'learning_rate':[0.2, 0.5, 1.0], 'criterion':['friedman_mse', 'squarred_error'], 'subsample':[0.5, 1.0, 1.5]}
