@@ -61,9 +61,8 @@ print("matrice de confusion meilleur modèle RandomForest= ", mat_conf_rf)
 
 plt.figure(figsize=(8, 6))
 sns.heatmap(mat_conf_rf, annot=True, fmt="d", cmap="Blues", cbar=False,
-            xticklabels=["Predicted Class 0", "Predicted Class 1"],
-            yticklabels=["Actual Class 0", "Actual Class 1"])
-
+            xticklabels=["Predicted -50k", "Predicted +50k"],
+            yticklabels=["Actual -50k", "Actual +50k"])
 # Add labels, title, and formatting
 plt.xlabel("Predicted Labels")
 plt.ylabel("True Labels")
@@ -94,8 +93,8 @@ print("matrice de confusion AdaBoost meilleur modèle = ", mat_conf_ab)
 
 plt.figure(figsize=(8, 6))
 sns.heatmap(mat_conf_ab, annot=True, fmt="d", cmap="Blues", cbar=False,
-            xticklabels=["Predicted Class 0", "Predicted Class 1"],
-            yticklabels=["Actual Class 0", "Actual Class 1"])
+            xticklabels=["Predicted -50k", "Predicted +50k"],
+            yticklabels=["Actual -50k", "Actual +50k"])
 
 # Add labels, title, and formatting
 plt.xlabel("Predicted Labels")
@@ -128,9 +127,8 @@ print("matrice de confusion GradientBoosting meilleur modèle = ", mat_conf_gb)
 
 plt.figure(figsize=(8, 6))
 sns.heatmap(mat_conf_gb, annot=True, fmt="d", cmap="Blues", cbar=False,
-            xticklabels=["Predicted Class 0", "Predicted Class 1"],
-            yticklabels=["Actual Class 0", "Actual Class 1"])
-
+            xticklabels=["Predicted -50k", "Predicted +50k"],
+            yticklabels=["Actual -50k", "Actual +50k"])
 # Add labels, title, and formatting
 plt.xlabel("Predicted Labels")
 plt.ylabel("True Labels")
