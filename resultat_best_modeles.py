@@ -1,6 +1,8 @@
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import seaborn as sns
 
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report, confusion_matrix
@@ -54,8 +56,20 @@ mat_conf_rf = confusion_matrix(y_test, rf_prediction)
 
 print("Moyenne des scores de Validation croisée meilleur modèle RandomForest = ", cv_scores_rf)
 print("Acuracy meilleur modèle RandomForest= ", ac_rf)
-print("classification report meilleur modèle RandomForest= ", class_rf)
+print("classification report meilleur modèle RandomForest= \n", class_rf)
 print("matrice de confusion meilleur modèle RandomForest= ", mat_conf_rf)
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(mat_conf_rf, annot=True, fmt="d", cmap="Blues", cbar=False,
+            xticklabels=["Predicted Class 0", "Predicted Class 1"],
+            yticklabels=["Actual Class 0", "Actual Class 1"])
+
+# Add labels, title, and formatting
+plt.xlabel("Predicted Labels")
+plt.ylabel("True Labels")
+plt.title("Matrice de confusion RandomForest avec les meilleurs paramètres")
+plt.show()
+
 
 
 # 2) on continue avec le modèle type AdaBoost :
@@ -75,8 +89,20 @@ mat_conf_ab = confusion_matrix(y_test, ab_prediction)
 
 print("Moyenne des scores de Validation croisée meilleur modèle AdaBoost= ", cv_scores_ab)
 print("Acuracy AdaBoost meilleur modèle = ", ac_ab)
-print("classification report AdaBoost meilleur modèle = ", class_ab)
+print("classification report AdaBoost meilleur modèle = \n", class_ab)
 print("matrice de confusion AdaBoost meilleur modèle = ", mat_conf_ab)
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(mat_conf_ab, annot=True, fmt="d", cmap="Blues", cbar=False,
+            xticklabels=["Predicted Class 0", "Predicted Class 1"],
+            yticklabels=["Actual Class 0", "Actual Class 1"])
+
+# Add labels, title, and formatting
+plt.xlabel("Predicted Labels")
+plt.ylabel("True Labels")
+plt.title("Matrice de confusion AdaBoost avec les meilleurs paramètres")
+plt.show()
+
 
 
 # 2) on continue avec le modèle type GradientBoosting :
@@ -97,5 +123,16 @@ mat_conf_gb = confusion_matrix(y_test, gb_prediction)
 
 print("Moyenne des scores de Validation croisée meilleur modèle GradientBoosting= ", cv_scores_gb)
 print("Acuracy GradientBoosting meilleur modèle= ", ac_gb)
-print("classification report GradientBoosting meilleur modèle = ", class_gb)
+print("classification report GradientBoosting meilleur modèle = \n", class_gb)
 print("matrice de confusion GradientBoosting meilleur modèle = ", mat_conf_gb)
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(mat_conf_gb, annot=True, fmt="d", cmap="Blues", cbar=False,
+            xticklabels=["Predicted Class 0", "Predicted Class 1"],
+            yticklabels=["Actual Class 0", "Actual Class 1"])
+
+# Add labels, title, and formatting
+plt.xlabel("Predicted Labels")
+plt.ylabel("True Labels")
+plt.title("Matrice de confusion GradientBoosting avec les meilleurs paramètres")
+plt.show()
